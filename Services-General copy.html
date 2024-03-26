@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
+         
+<link href="https://fonts.cdnfonts.com/css/red-hat-display" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<title>ARTLY STUDIO</title>
+<link rel="icon" href="./lolllll.png">
+<link href="https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/work-sans" rel="stylesheet">
+                       
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<style>
+  @import url('https://fonts.cdnfonts.com/css/neue-haas-grotesk-display-pro');
+  ::-webkit-scrollbar {
+    width: 12px;
+    background: #101010;
+    height: 12px;
+  }
+  @import url('https://fonts.cdnfonts.com/css/work-sans');
+  /* handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #c90e0e;
+  }
+  
+  /* handle on active */
+  ::-webkit-scrollbar-thumb:active {
+    background: #000000;
+  }
+  
+  /* scrollbar track */
+  ::-webkit-scrollbar-track {
+    background: #3a3a3a63;
+  }
+  
+  /* scrollbar handle */
+  ::-webkit-scrollbar-thumb {
+    background: #d6d6d6;
+  }
+  body {
+    background-color: #e2e2e2;
+    cursor: none;
+    opacity: 0;
+    transition: opacity 10s ease;
+    overflow: hidden;
+  }
+
+* {
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  letter-spacing: 1.5px;
+  font-weight: 300;
+  font-size: 18px;
+  color: rgb(0, 0, 0);    
+  cursor: none;                    
+}
+
+
+
+
+
+.cursor-dot,
+.cursor-dot-outline {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.cursor-dot {
+  width: 0px;
+  z-index: 3;
+  height: 0px;
+  background-color: #c0c0c0;
+}
+
+.cursor-dot-outline {
+  width: 6px;
+  z-index: 3;
+  height: 6px;
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+header {
+  height: 7vw;
+  width: 95vw;
+  display: flex;
+  align-items: center;
+  margin-inline: auto;
+ 
+}
+header > a > img {
+  width: 13vw;
+}
+
+.sidebar {
+  height: 70vh;
+  gap: 2vh;
+ 
+  position: fixed;
+ display: flex;
+ flex-direction: column;
+ justify-content: end;
+  width: 10vw;
+  
+  margin-left: 2.8vw;
+}
+.imgs {
+  
+  width: 53vw;
+  margin: auto;
+  position: absolute;
+  top: 56%;
+  gap: 0.2vw;
+  display: flex;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 65vh;
+}
+.heading {
+  width: 83vw;
+  
+  margin: auto;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  top: 16%;
+  gap: 0.2vw;
+  display: flex;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+.heading > h1, span {
+  font-size: 3vw;
+ 
+  font-weight: 300;
+}
+.heading > h1, span {
+  font-size: 3vw;
+  font-weight: 300;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+  transform: translateX(-100%);
+  animation: slideIn 2s ease-out forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+  }
+}
+.imgs > .left > img,  .imgs > .right > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+ 
+  transition: filter 1s;
+}
+.imgs > .left > img:hover,  .imgs > .right > img:hover {
+  filter: none;
+  
+}
+.left , .right {
+  position: relative;
+  flex: 1;
+  filter: grayscale(100%);
+  transition: flex 1s ease-in-out, filter 1s ease-in-out;
+}
+.left:hover ,  .right:hover {
+  filter: none;
+  flex: 2;
+}
+a {
+  text-decoration: none;
+  color: #585858;
+  font-size: max(0.8vw, 13px);
+  font-weight: 400;
+}
+a:nth-child(2) {
+  
+  color: white;
+}
+.left a,
+
+.right a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 1.7vw;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    margin: 0; /* Remove default margin */
+    z-index: 2; /* Place it above the images */
+    opacity: 1; /* Initially hide the heading */
+    transition: opacity 0.5s ease-in-out; /* Add transition effect */
+    transition: font-size 0.5s ease-in-out; /* Add transition effect */
+}
+
+/* Show the heading on hover */
+.left:hover a,
+
+.right:hover a {
+    opacity: 1;
+    font-size: 2.5vw;
+}
+@media  (max-width:600px) {
+  .heading {
+    width: 90vw;
+    
+    margin: auto;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    top: 23%;
+    gap: 0.2vw;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+  }
+
+  .heading > h1, span {
+    font-size: 7vw;
+    font-weight: 300;
+    white-space: wrap;
+    text-align: start;
+    overflow: hidden;
+    margin: 0;
+    
+    transform: translateX(-100%);
+    animation: slideIn 2s ease-out forwards;
+  }
+  .imgs > .left > img,  .imgs > .right > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+   object-position: top;
+    transition: filter 1s;
+  }
+  .imgs > .right > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 55% 35%;
+    transition: filter 1s;
+  }
+  .left a,
+
+.right a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 7vw;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    margin: 0; /* Remove default margin */
+    z-index: 2; /* Place it above the images */
+    opacity: 1; /* Initially hide the heading */
+    transition: opacity 0.5s ease-in-out; /* Add transition effect */
+    transition: font-size 0.5s ease-in-out; /* Add transition effect */
+}
+  .left , .right {
+    position: relative;
+    height: 23vh;
+    filter: none;
+    
+    transition: flex 1s ease-in-out, filter 1s ease-in-out;
+  }
+  .imgs {
+  
+    width: 90vw;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    flex-direction: column;
+    gap: 1vw;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 35vh;
+  }
+  header {
+    height: 27vw;
+    width: 92vw;
+    display: flex;
+    align-items: center;
+    
+    margin-inline: auto;
+   
+  }
+  
+
+  header > a > img {
+    width: 13vw;
+  }
+  
+  header > a > img {
+    width: 43vw;
+  }
+
+  a {
+    text-decoration: none;
+    color: #BDBDBD;
+    font-size:4vw;
+    font-weight: 400;
+  }
+  
+
+  .sidebar {
+    height: 70vh;
+    gap: 2vh;
+    position: absolute;
+    top: 125%;
+    left: 83%;
+    transform: translate(-50%, -50%);
+   display: flex;
+   flex-direction: row;
+   justify-content: end;
+    width: 10vw;
+    
+    margin-left: none;
+  }
+  .cursor-dot {
+   display: none;
+  }
+  
+  .cursor-dot-outline {
+    display: none;
+  }
+}
+</style>
+</head>
+<body >
+  <div class="cursor-dot-outline"></div>
+<div class="cursor-dot"></div>
+<main>
+  
+  <section class="sidebar">
+    <a href="./index.html">HOME</a>
+    <a  style="color: rgb(0, 0, 0);" href="./Services-General copy.html">SERVICES</a>
+    <a  href="./About-general.html">ABOUT</a>
+    <a href="./Contact.html">CONTACT</a>
+  </section>
+  <div class="heading">
+    <h1>Here is what I can offer  <span style="color: #5f42cf;">YOU</span></h1>
+  </div>
+  <div class="imgs">
+    <div class="left">
+      <img src="./dasdasdasd@4x.png" alt="">
+      <a href="./Services.html">Graphic Design</a>
+      
+    </div>
+   
+    <div class="right">
+      <img src="./12212569_4862627.jpg" alt="">
+      <a href="./About-Scuro.html">Website Development</a>
+    </div>
+  </div>
+  
+</main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const heading = document.querySelector('.heading > h1');
+      heading.addEventListener('animationend', function () {
+        heading.classList.remove('slide-in');
+      });
+    });
+      // Wait for the content to load
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fade in the body content
+        document.body.style.opacity = '1';
+      });
+      document.addEventListener('DOMContentLoaded', function () {
+        // Fade in the body content
+        document.div.style.opacity = '1';
+      });
+    var cursor = {
+      delay: 2,
+      _x: 0,
+      _y: 0,
+      endX: (window.innerWidth / 2),
+      endY: (window.innerHeight / 2),
+      cursorVisible: true,
+      cursorEnlarged: false,
+      $dot: document.querySelector('.cursor-dot'),
+      $outline: document.querySelector('.cursor-dot-outline'),
+      
+      init: function() {
+          // Set up element sizes
+          this.dotSize = this.$dot.offsetWidth;
+          this.outlineSize = this.$outline.offsetWidth;
+          
+          this.setupEventListeners();
+          this.animateDotOutline();
+      },
+      
+  //     updateCursor: function(e) {
+  //         var self = this;
+          
+  //         console.log(e)
+          
+  //         // Show the cursor
+  //         self.cursorVisible = true;
+  //         self.toggleCursorVisibility();
+  
+  //         // Position the dot
+  //         self.endX = e.pageX;
+  //         self.endY = e.pageY;
+  //         self.$dot.style.top = self.endY + 'px';
+  //         self.$dot.style.left = self.endX + 'px';
+  //     },
+      
+      setupEventListeners: function() {
+          var self = this;
+          
+          // Anchor hovering
+          document.querySelectorAll('a').forEach(function(el) {
+              el.addEventListener('mouseover', function() {
+                  self.cursorEnlarged = true;
+                  self.toggleCursorSize();
+              });
+              el.addEventListener('mouseout', function() {
+                  self.cursorEnlarged = false;
+                  self.toggleCursorSize();
+              });
+          });
+          
+          // Click events
+          document.addEventListener('mousedown', function() {
+              self.cursorEnlarged = true;
+              self.toggleCursorSize();
+          });
+          document.addEventListener('mouseup', function() {
+              self.cursorEnlarged = false;
+              self.toggleCursorSize();
+          });
+    
+    
+          document.addEventListener('mousemove', function(e) {
+              // Show the cursor
+              self.cursorVisible = true;
+              self.toggleCursorVisibility();
+  
+              // Position the dot
+              self.endX = e.pageX;
+              self.endY = e.pageY;
+              self.$dot.style.top = self.endY + 'px';
+              self.$dot.style.left = self.endX + 'px';
+          });
+          
+          // Hide/show cursor
+          document.addEventListener('mouseenter', function(e) {
+              self.cursorVisible = true;
+              self.toggleCursorVisibility();
+              self.$dot.style.opacity = 1;
+              self.$outline.style.opacity = 1;
+          });
+          
+          document.addEventListener('mouseleave', function(e) {
+              self.cursorVisible = true;
+              self.toggleCursorVisibility();
+              self.$dot.style.opacity = 0;
+              self.$outline.style.opacity = 0;
+          });
+      },
+      
+      animateDotOutline: function() {
+          var self = this;
+          
+          self._x += (self.endX - self._x) / self.delay;
+          self._y += (self.endY - self._y) / self.delay;
+          self.$outline.style.top = self._y + 'px';
+          self.$outline.style.left = self._x + 'px';
+          
+          requestAnimationFrame(this.animateDotOutline.bind(self));
+      },
+      
+      toggleCursorSize: function() {
+          var self = this;
+          
+          if (self.cursorEnlarged) {
+              self.$dot.style.transform = 'translate(-50%, -50%) scale(6.75)';
+              self.$outline.style.transform = 'translate(-50%, -50%) scale(8.5)';
+          } else {
+              self.$dot.style.transform = 'translate(-50%, -50%) scale(1)';
+              self.$outline.style.transform = 'translate(-50%, -50%) scale(1)';
+          }
+      },
+      
+      toggleCursorVisibility: function() {
+          var self = this;
+          
+          if (self.cursorVisible) {
+              self.$dot.style.opacity = 1;
+              self.$outline.style.opacity = 1;
+          } else {
+              self.$dot.style.opacity = 0;
+              self.$outline.style.opacity = 0;
+          }
+      }
+  }
+  
+  cursor.init();
+    document.addEventListener('DOMContentLoaded', function () {
+      const backgroundSection = document.querySelector('.background-section');
+      let isImage1 = true;
+
+      function toggleBackground() {
+        isImage1 = !isImage1;
+        const className = isImage1 ? 'image1' : 'image2';
+        backgroundSection.className = `background-section ${className}`;
+      }
+
+      setInterval(toggleBackground, 3000); // Change background every 3 seconds
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
